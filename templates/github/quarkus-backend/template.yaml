@@ -126,13 +126,13 @@ spec:
                 imageRepository:
                   title: Select a registry
                   type: string
-                  default: quay.io
+                  default: image-registry.openshift-image-registry.svc:5000
                   enum:
-                    - quay.io
                     - image-registry.openshift-image-registry.svc:5000
+                    - quay.io
                   enumNames:
-                    - Quay
                     - Internal OpenShift Registry
+                    - Quay
                 imageUrl:
                   title: Image URL
                   type: string
@@ -220,7 +220,7 @@ spec:
       input:
         allowedHosts: ['github.com']
         description: ${{ parameters.description }}
-        repoUrl: github.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
+        repoUrl: github.com?owner=${{ parameters.owner }}&repo=${{ parameters.repoName }}
         defaultBranch: main
 
     - id: register
