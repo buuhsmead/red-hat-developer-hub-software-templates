@@ -38,9 +38,9 @@ spec:
           type: string
           description: The git repository
           enum:
-            - https://github.com
+            - https://github.com/thio-jgmpn
           enumNames:
-            - github
+            - github-thio-jgmpn
         description:
           title: Description
           type: string
