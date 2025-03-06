@@ -7,7 +7,7 @@ The Tekton CI Method will require some steps before you are able to run
 - Add Quay.io credentials as a secret
 - Setup a GitHub webhook for push events
 - Add gitHubApp credentials (PAT) as a secret
-
+- Add the secret to the ServiceAccount (SA) named pipeline
 
 ```
 kind: Secret
