@@ -4,6 +4,8 @@ metadata:
   name: quarkus-backend-template
   title: Create a Quarkus Backend application with a CI pipeline
   description: Create a starter Quarkus Backend application with a CI pipeline
+  annotations:
+    backstage.io/techdocs-ref: dir:.
   tags:
     - quarkus
     - java
@@ -71,7 +73,7 @@ spec:
           type: string
           default: quarkusapp
           description: Maven Artifact ID
-        version: 
+        version:
           title: Version
           type: string
           default: 1.0.0-SNAPSHOT
