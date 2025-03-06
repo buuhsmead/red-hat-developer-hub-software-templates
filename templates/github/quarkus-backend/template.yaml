@@ -104,11 +104,11 @@ spec:
           description: This action will create a CI pipeline for your application based on chosen method
           default: ../../../skeletons/github-actions/
           enum:
-            - ../../../skeletons/github-actions/
             - ../../../skeletons/tekton/
+            - ../../../skeletons/github-actions/
           enumNames:
-            - GitHub Action
             - Tekton
+            - GitHub Action
       dependencies:
         ci:
           oneOf:
@@ -136,7 +136,7 @@ spec:
                 imageUrl:
                   title: Image URL
                   type: string
-                  description: The Quay.io or OpenShift Image URL <REGISTRY>/<IMAGE_URL>/<REPO_NAME>
+                  description: The Quay.io or OpenShift Image URL <registry>/<IMAGE_URL>/<repo_name>
                 namespace:
                   title: Namespace
                   type: string
