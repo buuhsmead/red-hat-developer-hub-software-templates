@@ -28,9 +28,19 @@ spec:
         orgName:
           title: Organization Name
           type: string
+          ui:field: OwnerPicker
+          ui:options:
+            catalogFilter:
+              - kind: Group
+                spec.type: organization
         repoName:
           title: Repository Name
           type: string
+          description: The git repository
+          enum:
+            - https://github.com/thio-jgmpn
+          enumNames:
+            - githubOrg
         description:
           title: Description
           type: string
@@ -77,7 +87,7 @@ spec:
         version:
           title: Version
           type: string
-          default: 1.0.0-SNAPSHOT
+          default: 0.1.0-SNAPSHOT
           description: Maven Artifact Version
         javaPackageName:
           title: Java Package Namespace
