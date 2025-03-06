@@ -10,6 +10,7 @@ metadata:
     - quarkus
     - java
     - maven
+    - s2i-java
 spec:
   owner: janus-authors
   system: janus-idp
