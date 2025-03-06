@@ -3,10 +3,13 @@ apiVersion: route.openshift.io/v1
 metadata:
   name: webhook-${{ values.repoName }}-el
   namespace: ${{ values.namespace }}
+  annotations:
+    backstage.io/kubernetes-id: ${{ values.repoName }}
   labels:
     app.kubernetes.io/managed-by: EventListener
     app.kubernetes.io/part-of: Triggers
     eventlistener: ${{ values.repoName }}-el
+    app: ${{ values.repoName }}
 spec:
   to:
     kind: Service

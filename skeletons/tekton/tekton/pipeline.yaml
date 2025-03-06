@@ -3,8 +3,11 @@ kind: Pipeline
 metadata:
   name: ${{ values.repoName }}-pipeline
   namespace: ${{ values.namespace }}
+  annotations:
+    backstage.io/kubernetes-id: ${{ values.repoName }}
   labels:
     type: pipeline
+    app: ${{ values.repoName }}
 spec:
   params:
     - name: source-repo
@@ -26,9 +29,17 @@ spec:
           value: $(params.source-repo)
         - name: revision
           value: $(params.source-branch)
+        - name: DEBUG
+          value: true
       taskRef:
-        kind: ClusterTask
-        name: git-clone
+        resolver: cluster
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: git-clone
+          - name: namespace
+            value: openshift-pipelines
       workspaces:
         - name: output
           workspace: source-folder
@@ -38,11 +49,21 @@ spec:
           value: latest
         - name: IMAGE
           value: $(params.output-image)
+        - name: VERBOSE
+          value: true
+        - name: IMAGE_SCRIPTS_URL
+          value: image:///usr/local/s2i
       runAfter:
         - git-clone
       taskRef:
-        kind: ClusterTask
-        name: ${{ values.imageBuilder }}
+        resolver: cluster
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: s2i-java
+          - name: namespace
+            value: openshift-pipelines
       workspaces:
         - name: source
           workspace: source-folder

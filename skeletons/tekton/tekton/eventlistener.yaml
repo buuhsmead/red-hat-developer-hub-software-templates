@@ -3,6 +3,10 @@ kind: EventListener
 metadata:
   name: ${{ values.repoName }}-el
   namespace: ${{ values.namespace }}
+  annotations:
+    backstage.io/kubernetes-id: ${{ values.repoName }}
+  labels:
+    app: ${{ values.repoName }}
 spec:
   serviceAccountName: pipeline
   triggers:
@@ -10,18 +14,18 @@ spec:
         - kind: ClusterTriggerBinding
           ref: github-push
       interceptors:
-        - params:
+        - ref:
+            name: github
+          params:
             - name: eventTypes
               value: ['push']
-          ref:
-            name: github
-        - params:
+        - ref:
+            name: cel
+          params:
             - name: git-revision
               value: >-
                 (body.ref.contains('main'))
             - name: overlays
               value: null
-          ref:
-            name: cel
       template:
         ref: ${{ values.repoName }}-run-pipeline
