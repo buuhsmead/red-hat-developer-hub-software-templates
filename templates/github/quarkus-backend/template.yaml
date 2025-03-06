@@ -37,10 +37,6 @@ spec:
           title: Repository Name
           type: string
           description: The git repository
-          enum:
-            - https://github.com/thio-jgmpn
-          enumNames:
-            - github-thio-jgmpn
         description:
           title: Description
           type: string
