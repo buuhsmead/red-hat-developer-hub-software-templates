@@ -37,10 +37,6 @@ spec:
           title: Repository Name
           type: string
           description: The git repository
-          enum:
-            - https://github.com
-          enumNames:
-            - github
         description:
           title: Description
           type: string
