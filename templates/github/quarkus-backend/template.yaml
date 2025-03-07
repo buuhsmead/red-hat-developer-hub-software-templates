@@ -31,8 +31,9 @@ spec:
           ui:field: OwnerPicker
           ui:options:
             catalogFilter:
-              - kind: Group
-                spec.type: organization
+              kind:
+                - Group
+                - User
         repoName:
           title: Repository Name
           type: string
