@@ -217,7 +217,7 @@ spec:
       input:
         allowedHosts: ['github.com']
         description: ${{ parameters.description }}
-        repoUrl: github.com?repo=${{ parameters.repoName }}&owner=${{ parameters.owner }}
+        repoUrl: github.com?repo=${{ parameters.repoName }}&owner=thio-jgmpn
         defaultBranch: main
 
     - id: register
