@@ -3,9 +3,9 @@ apiVersion: scaffolder.backstage.io/v1beta3
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
 kind: Template
 metadata:
-  name: generated-example-template
-  title: Scaffolder Example Template
-  description: An example template for the scaffolder
+  name: quarkus-openapi-template
+  title: Create a Quarkus Backend application from an OpenApi
+  description: Create a starter Quarkus Backend application from an OpenApi
   tags:
     - quarkus
     - java
