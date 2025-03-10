@@ -6,6 +6,12 @@ metadata:
   name: generated-example-template
   title: Scaffolder Example Template
   description: An example template for the scaffolder
+  tags:
+    - quarkus
+    - java
+    - maven
+    - s2i-java
+    - openapi
 spec:
   owner: user:guest
   type: service
@@ -57,8 +63,8 @@ spec:
               kind:
                 - API
 
-      
-      
+
+
   steps:
     - id: fetch-catalog-api
       name: Fetch API info
@@ -66,7 +72,7 @@ spec:
       input:
         entityRef: ${{parameters.nameApi}}
 
-  
+
     - id: template
       name: Generating the Source Code Component
       action: fetch:template
@@ -84,7 +90,7 @@ spec:
       input:
         message: ${{ steps['fetch-catalog-api'].output.entity | dump }}
 
-  
+
     - action: debug:log
       id: write-workspace-directory
       name: List the workspace directory with file contents
@@ -121,4 +127,4 @@ spec:
     text:
       - title: API definition
         content: ${{ steps['fetch-catalog-api'].output.entity.spec.definition }}
-        
+
