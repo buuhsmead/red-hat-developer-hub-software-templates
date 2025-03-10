@@ -14,7 +14,7 @@ metadata:
     - openapi
 spec:
   type: service
-  owner: buuhsmead
+  owner: user:default/buuhsmead
   system: quarkusapp
 
   # These parameters are used to generate the input form in the frontend, and are
