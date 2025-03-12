@@ -92,29 +92,29 @@ spec:
           type: string
           description: The external facing host URL
   steps:
-    - id: catalogTemplate
-      name: Generating the Catalog Info Component
-      action: fetch:template
-      input:
-        url: ../../../skeletons/catalog-info/
-        values:
-          # Gitops specific values
-          entityKind: Resource
-          dependsOn: ${{ parameters.componentName }}
-
-          # Normal values
-          orgName: ${{ parameters.orgName }}
-          repoName: ${{ parameters.repoName }}-gitops
-          owner: ${{ parameters.owner }}
-          system: ${{ parameters.system }}
-          applicationType: gitops
-          description: Contains the ArgoCD manifests for ${{ parameters.repoName }}
-          namespace: ${{ parameters.namespace }}
-          imageUrl: ${{ parameters.imageUrl }}
-          hostUrl: ${{ parameters.hostUrl }}
-          imageRepository: ${{ parameters.imageRepository }}
-          port: ${{ parameters.port }}
-          sourceControl: github.com
+#    - id: catalogTemplate
+#      name: Generating the Catalog Info Component
+#      action: fetch:template
+#      input:
+#        url: ../../../skeletons/catalog-info/
+#        values:
+#          # Gitops specific values
+#          entityKind: Resource
+#          dependsOn: ${{ parameters.componentName }}
+#
+#          # Normal values
+#          orgName: ${{ parameters.orgName }}
+#          repoName: ${{ parameters.repoName }}-gitops
+#          owner: ${{ parameters.owner }}
+#          system: ${{ parameters.system }}
+#          applicationType: gitops
+#          description: Contains the ArgoCD manifests for ${{ parameters.repoName }}
+#          namespace: ${{ parameters.namespace }}
+#          imageUrl: ${{ parameters.imageUrl }}
+#          hostUrl: ${{ parameters.hostUrl }}
+#          imageRepository: ${{ parameters.imageRepository }}
+#          port: ${{ parameters.port }}
+#          sourceControl: github.com
 
     - id: manifestsTemplate
       name: Generating the Manifests Component
