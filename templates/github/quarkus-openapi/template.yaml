@@ -28,14 +28,11 @@ spec:
           title: Name
           type: string
           description: Unique name of the component
-        owner:
-          title: Owner
+        description:
+          title: Description
           type: string
-          description: Owner of the component
-          ui:field: OwnerPicker
-          ui:options:
-            catalogFilter:
-              kind: Group
+          description: Help others understand what this component is for
+
     - title: Choose a location
       required:
         - repoUrl
@@ -49,7 +46,10 @@ spec:
               - github.com
             allowedOrganizations:
               - thio-jgmpn
+          requestUserCredentials:
+            secretsKey: USER_OAUTH_TOKEN
 
+              
     - title: Choose an API
       required:
         - nameApi
@@ -84,12 +84,14 @@ spec:
           owner: ${{parameters.owner}}
           organization: ${{parameters.organization}}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          description: ${{parameters.description}}
+          component_id: ${{parameters.name}}
 
     - id: debug-log
       name: debug-log
       action: debug:log
       input:
-        message: ${{ steps['fetch-catalog-api'].output.entity | dump }}
+        message: ${{ steps['template'].input | dump }}
 
 
     - action: debug:log
