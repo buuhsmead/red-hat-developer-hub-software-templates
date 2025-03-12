@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generatedName: ${{ values.repoName }}-pipelinerun-
+  generateName: ${{ values.repoName }}-pipelinerun-
   name: ${{ values.repoName }}-pipelinerun-
   namespace: app-team-b
   annotations:
