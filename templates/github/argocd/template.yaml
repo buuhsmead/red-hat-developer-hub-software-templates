@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: argocd-template
-  title: C Add ArgoCD to an existing project
+  title: D Add ArgoCD to an existing project
   description: Add ArgoCD to an existing project
   tags:
     - recommended
