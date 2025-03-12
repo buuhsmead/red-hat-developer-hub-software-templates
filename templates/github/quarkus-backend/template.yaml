@@ -145,7 +145,8 @@ spec:
       input:
         url: ./skeleton
         values:
-          orgName: ${{ parameters.orgName }}
+          #orgName: ${{ parameters.orgName }}
+          orgName: 'thio-jgmpn'
           repoName: ${{ parameters.repoName }}
           owner: ${{ parameters.owner }}
           system: ${{ parameters.system }}
@@ -171,7 +172,8 @@ spec:
         copyWithoutTemplating:
           - .github/workflows/
         values:
-          orgName: ${{ parameters.orgName }}
+          #orgName: ${{ parameters.orgName }}
+          orgName: 'thio-jgmpn'
           repoName: ${{ parameters.repoName }}
           owner: ${{ parameters.owner }}
           system: ${{ parameters.system }}
@@ -194,7 +196,8 @@ spec:
       input:
         url: ../../../skeletons/catalog-info/
         values:
-          orgName: ${{ parameters.orgName }}
+          #orgName: ${{ parameters.orgName }}
+          orgName: 'thio-jgmpn'
           repoName: ${{ parameters.repoName }}
           owner: ${{ parameters.owner }}
           system: ${{ parameters.system }}
