@@ -1,0 +1,68 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name:${{ values.repoName }}-pipeline
+  namespace: app-team-b
+  annotations:
+    backstage.io/kubernetes-id: ${{ values.repoName }}
+  labels:
+    type: pipeline
+    app: ${{ values.repoName }}
+spec:
+  params:
+    - name: source-repo
+      description: source repo that contains the application code
+      type: string
+    - name: source-branch
+      description: source branch to build from
+      default: main
+      type: string
+  tasks:
+    - name: git-clone
+      params:
+        - name: URL
+          value: $(params.source-repo)
+        - name: revision
+          value: $(params.source-branch)
+        - name: DELETE_EXISTING
+          value: "true"
+        - name: DEBUG
+          value: true
+      taskRef:
+        resolver: cluster
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: git-clone
+          - name: namespace
+            value: openshift-pipelines
+      workspaces:
+        - name: output
+          workspace: source-folder
+    - name: s2i-java
+      params:
+        - name: VERSION
+          value: latest
+        - name: IMAGE
+          value: $(params.output-image)
+        - name: VERBOSE
+          value: true
+        - name: IMAGE_SCRIPTS_URL
+          value: image:///usr/local/s2i
+      runAfter:
+        - git-clone
+      taskRef:
+        resolver: cluster
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: s2i-java
+          - name: namespace
+            value: openshift-pipelines
+      workspaces:
+        - name: source
+          workspace: source-folder
+  workspaces:
+    - name: source-folder

@@ -1,0 +1,27 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: ${{ values.repoName }}-el
+  namespace: app-team-b
+  annotations:
+    backstage.io/kubernetes-id: ${{ values.repoName }}
+  labels:
+    app:${{ values.repoName }}
+spec:
+  serviceAccountName: pipeline
+  triggers:
+    - bindings:
+        - kind: ClusterTriggerBinding
+          ref: github-push
+      interceptors:
+        - ref:
+            name: github
+          params:
+            - name: "eventTypes"
+              value: ['push']
+            - name: "secretRef"
+              value:
+                secretName: github-secret-${{ values.repoName }}
+                secretKey: WebHookSecretKey
+      template:
+        ref: ${{ values.repoName }}-run-pipeline
