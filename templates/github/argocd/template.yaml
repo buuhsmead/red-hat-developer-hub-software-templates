@@ -150,7 +150,8 @@ spec:
       input:
         appName: ${{ parameters.repoName }}
         # Hardcoded value because this is kept as a secret on the server to allow forks to easily change the value
-        argoInstance: argocd.operate-first.cloud
+        #argoInstance: argocd.operate-first.cloud
+        argoInstance: developer-gitops
         namespace: ${{ parameters.namespace }}
         repoUrl: ${{ steps.publish.output.remoteUrl }}
         labelValue: ${{ parameters.repoName }}
